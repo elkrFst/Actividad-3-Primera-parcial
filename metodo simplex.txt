@@ -1,0 +1,1705 @@
+﻿Ejemplo de Método Simplex:
+
+Vamos a resolver el siguiente problema:
+
+Maximizar Z  =  f(x1,x2) = 3x1 + 2x2
+
+Sujeto a: 2x1 + x2 ≤ 18
+
+2x1 + 3x2  ≤ 42
+
+3x1 + x2  ≤ 24
+
+x1 ≥ 0 , x2 ≥ 0
+
+
+
+Se consideran los siguientes pasos: 
+
+1. Convertir las desigualdades en 
+igualdades:
+
+Se introduce una variable de holgura por cada
+una de las restricciones, este caso s1, s2, s3 para
+convertirlas en igualdades y formar el sistema de
+ecuaciones estándar. Usando en simplex el
+siguiente criterio:
+
+Signo: Introducir
+
+≤ sn
+
+
+
+FORMA ESTANDAR:
+
+2x1 + x2 + s1 = 18
+
+2x1 + 3x2 + s2 = 42
+
+3x1 + x2 + s3 =  24
+
+FORMA ESTANDAR: con la cual se va a trabajar de aquí 
+en adelante
+
+
+
+2. Igualar la función objetivo a cero y después agregar la
+variables de holgura del sistema anterior:
+
+Z - 3 x1 - 2 x2 = 0
+Para este caso en particular la función objetivo ocupa la ultima fila
+
+del tablero, pero de preferencia siempre se debe de colocar como la
+primer fila
+
+Cuando minimizamos se toma el valor (+) positivo de Fo para
+convertirlo en negativo y cuando maximizamos tomamos el valor (+)
+negativo de Fo para convertirlo en positivo.
+
+3. Escribir el tablero inicial simplex:
+
+En las columnas aparecerán todas las variables del problema y, en
+las filas, los coeficientes de las igualdades obtenidas, una fila para cada
+restricción y la última fila con los coeficientes de la función objetivo:
+
+
+
+Tablero Inicial
+
+Base Variable de Variable de holgura Solución
+decisión
+
+X1 X2 S1 S2 S3
+
+S1 2 1 1 0 0 18
+
+S2 2 3 0 1 0 42
+
+S3 3 1 0 0 1 24
+
+Z -3 -2 0 0 0 0
+
+
+
+4.     Encontrar la variable de decisión que entra en la base y la               
+variable de holgura que sale de la base 
+
+A. Para escoger la variable de decisión que entra en la base, (FLECHA
+VERDE PARTE SUPERIOR), observamos la ultima fila, la cual muestra
+los coeficientes de la función objetivo y escogemos la variable con el
+coeficiente más negativo (en valor absoluto).
+
+En este caso, la variable x1 de coeficiente - 3.
+
+Si existen dos o más coeficientes iguales que cumplan la
+condición anterior, entonces se elige cualquiera de ellos.
+
+Si en la última fila no existiese ningún coeficiente negativo,
+significa que se ha alcanzado la solución óptima.
+
+Por tanto, lo que va a determinar el final del proceso de aplicación del
+método del simplex, es que en la última fila no haya elementos
+negativos.
+
+La columna de la variable que entra en la base se llama 
+columna pivote (en color azulado). 
+
+
+
+ 
+B. Para encontrar la variable de holgura que tiene que salir de la
+
+base, (FLECHA VERDE COSTADO IZQUIERDO) se divide
+cada término de la última columna (valores solución) por el
+término correspondiente de la columna pivote, siempre que
+estos últimos sean mayores que cero.
+
+Si hubiese algún elemento menor o igual que cero no se hace
+dicho cociente. En el caso de que todos los elementos fuesen
+menores o iguales a cero, entonces tendríamos una solución no
+acotada y no se puede seguir.
+
+El término de la columna pivote que en la división anterior dé
+lugar al menor cociente positivo, el 3, ya 8 es el menor, indica la fila de
+la variable de holgura que sale de la base, S3. Esta fila se llama fila
+pivote (en color azulado).
+
+
+
+Iteración No. 1
+
+Base Variable de Variable de holgura Solución Operación
+decisión
+
+X1 X2 S1 S2 S3
+
+S1 2 1 1 0 0 18 18/2 = 9
+
+S2 2 3 0 1 0 42 42/2 = 21
+
+S3 3 1 0 0 1 24 24/3 = 8
+
+Z -3 -2 0 0 0 0
+
+
+
+Si al calcular los cocientes, dos o más son iguales, indica que cualquiera 
+de las variables correspondientes pueden salir de la base.
+
+C. En la intersección de la fila pivote y columna pivote tenemos el elemento 
+pivote operacional, 3, este indica que la variable de decisión X1 entra y la 
+variable de holgura S3 sale.
+
+5. Encontrar los coeficientes para el nuevo tablero de 
+simplex.
+
+Los nuevos coeficientes de la fila pivote se obtienen dividiendo todos
+los coeficientes de la fila por el pivote operacional “3”, ya que este se debe
+convertir en 1.
+
+A continuación mediante la reducción gaussiana hacemos ceros los
+restantes términos de la columna pivote, con lo que obtenemos los nuevos
+coeficientes de las otras filas incluyendo los de la función objetivo Z.
+
+
+
+Resultado de Iteración No. 1
+
+Base Variable de Variable de holgura Solución Operación
+decisión
+
+X1 X2 S1 S2 S3
+
+S1 0 1/3 1 0 -2/3 2 f(S1) – 2 f(X1)
+
+S2 0 7/3 0 1 -2/3 26 f(S2) – 2 f(X1)
+
+X1 1 1/3 0 0 1/3 8 (1/3) X1
+
+Z 0 -1 0 0 1 24 f(Z) + 3 f(X1)
+
+
+
+Como en los elementos de la última fila hay un numero negativo, -1,
+significa que no hemos llegado todavía a la solución óptima. Hay que
+repetir el proceso:
+
+A. La variable que entra en la base es x2, por ser la columna
+pivote que corresponde al coeficiente -1
+
+B. Para calcular la variable que sale o la fila pivote, dividimos los 
+términos de la columna solución entre los términos de la nueva 
+columna pivote:
+
+y como el menor cociente positivo es 6, tenemos que la fila
+pivote y la variable de holgura que sale es S1.
+
+C. El elemento pivote, que ahora hay que hacer 1, es 1/3.
+
+Y se opera de forma análoga a la anterior iteración
+
+
+
+Iteración No. 2
+
+Base Variable de Variable de holgura Solución Operación
+decisión
+
+X1 X2 S1 S2 S3
+
+S1 0 1/3 1 0 -2/3 2 2/(1/3) = 6
+
+S2 0 7/3 0 1 -2/3 26 26/(7/3) = 78/7
+
+X1 1 1/3 0 0 -1/3 8 8/(1/3) = 24
+
+Z 0 -1 0 0 1 24
+
+
+
+Resultado de Iteración No. 2
+
+Base Variable de Variable de holgura Solución Operación
+decisión
+
+X1 X2 S1 S2 S3
+
+X2 0 1 3 0 -2 6 3X2
+
+S2 0 0 -7 1 4 12 f(S2) – (7/3) f(X2)
+
+X1 1 0 -1 0 1 6 f(X1) – (1/3) f(X2)
+
+Z 0 0 3 0 -1 30 f(Z) + f(X2)
+
+
+
+Como en los elementos de la última fila hay uno negativo, -1,
+significa que no hemos llegado todavía a la solución óptima. Hay que
+repetir el proceso:
+
+A. La variable que entra en la base es S3, por ser la variable que
+corresponde al coeficiente -1
+
+B. Para calcular la variable que sale, dividimos los términos de la 
+última columna entre los términos correspondientes de la 
+nueva columna pivote:
+
+6/(-2) [=-3] , 12/4 [=3], y 6:1 [=6]
+
+y como el menor cociente positivo es 3, tenemos que la
+variable de holgura que sale es S2.
+
+C. El elemento pivote, que ahora hay que hacer 1, es 4.
+Obtenemos la tabla:
+
+
+
+Iteración No. 3
+
+Base Variable de Variable de holgura Solución Operación
+decisión
+
+X1 X2 S1 S2 S3
+
+X2 0 1 3 0 -2 6 No se toma por 
+ser negativo
+
+S2 0 0 -7 1 4 12 12/4 = 3
+
+X1 1 0 -1 0 1 6 6/1 = 6
+
+Z 0 0 3 0 -1 30
+
+
+
+Resultado de Iteración No. 3
+
+Base Variable de Variable de holgura Solución Operación
+decisión
+
+X1 X2 S1 S2 S3
+
+X2 0 1 -2/4 2/4 0 12 f(X2) + 2 f(S3)
+
+S3 0 0 -7/4 1/4 1 3 (1/4) S3
+
+X1 1 0 3/4 -1/4 0 3 f(X1) – f(S3)
+
+Z 0 0 5/4 1/4 0 33 f(Z) + f(S3)
+
+
+
+Tablero Final
+
+Base Variable de Variable de holgura Solución
+decisión
+
+X1 X2 S1 S2 S3
+
+X2 0 1 -2/4 2/4 0 12
+
+S3 0 0 -7/4 1/4 1 3
+
+X1 1 0 3/4 1/4 0 3
+
+Z 0 0 5/4 1/4 0 33
+
+
+
+Como todos los coeficientes de la fila de la
+función objetivo son positivos, hemos llegado a
+la solución óptima.
+
+La solución óptima viene dada por el valor
+de Z en la columna de los valores solución, en
+nuestro caso: 33.
+
+
+
+METODO GRAFICO PRIMER RESTRICCION
+
+
+
+METODO GRAFICO SEGUNDA RESTRICCION
+
+
+
+METODO GRAFICO TERCER RESTRICCION
+
+
+
+METODO GRAFICO SOLUCION OPTIMA
+
+
+
+TAREA 2
+
+Pinturas ¨La Mancha¨ produce pinturas para interiores y exteriores, M1 y M2. 
+La tabla siguiente proporciona los datos básicos del problema.
+
+Una encuesta de mercado indica que la demanda diaria de pintura para
+interiores no puede ser mayor que 1 tonelada más que la de pintura para
+exteriores.
+También, que la demanda máxima diaria de pintura para interiores es de 2
+toneladas. ¨La Mancha¨ desea determinar la mezcla óptima (la mejor) de
+productos para exteriores y para interiores que maximice la utilidad diaria total.
+
+
+
+
+
+
+EJEMPLO 2
+
+FORMA  ORIGINAL FORMA AUMENTADA
+
+Z= 3X1 + 5X2 Z= 3X1 + 5X2
+
+s.a: s.a:
+
+X1 ≤  4 X1 +S1 =  4
+2X2 ≤  12 2X2 + S2 =  12
+
+3X1 + 2X2 ≤  18 3X1 + 2X2 + S3 =  18
+X1 ≥ 0,   X2 ≥ 0 X1 ≥ 0,   X2 ≥ 0
+
+
+
+Tablero Inicial
+
+Base Variable de Variable de holgura Solución
+decisión
+
+X1 X2 S1 S2 S3
+
+S1 1 0 1 0 0 4 X
+
+S2 0 2 0 1 0 12 12/2=6
+
+S3 3 2 0 0 1 18 18/2=9
+
+Z -3 -5 0 0 0 0
+
+
+
+S1NUEVA [1,0,1,0,0,4]-0[0,1,0,1/2,0,6]=[1,0,1,0,0,4]
+
+S3NUEVA [3,2,0,0,1,18] -2[0,1,0,1/2,0,6]=[3,0,0,1/2,0,6]
+
+ZNUEVA [-3,-5,0,0,0,0] +5[0,1,0,1/2,0,6]=[-3,0,0,5/2,0,30]
+
+
+
+Tablero Inicial
+
+Base Variable de Variable de holgura Solución
+decisión
+
+X1 X2 S1 S2 S3
+
+S1 1 0 1 0 0 4 4/1=4
+
+x2 0 1 0 1/2 0 6 X
+
+S3 3 0 0 -1 1 6 6/3=2
+
+Z -3 0 0 5/2 0 30
+
+
+
+S1NUEVA [1,0,1,0,0,4] -1[1,0,0,-1/3,1/3,2]=[0,0,1,1/3,-1/3,2]
+
+x2NUEVA [0,,0,1/2,0,6] -0[1,0,0,-1/3,1/3,2]=[0,1,0,1/2,0,6]
+
+ZNUEVA [-3,0,0,5/2,0,30] +3[1,0,0,-1/3,1/3,2]=[0,0,0,3/2,1,36]
+
+
+
+Tablero Inicial
+
+Base Variable de Variable de holgura Solución
+decisión
+
+X1 X2 S1 S2 S3
+
+S1 0 0 1 1/3 -1/3 2
+
+x2 0 1 0 1/2 0 6
+
+X1 1 0 0 -1/3 1/3 2
+
+Z 0 0 0 3/2 1 36
+
+
+
+ METODO DE LA M
+
+ ADAPTACIÓN A OTRAS FORMAS DEL MODELO.
+
+ Hasta ahora hemos trabajado con la suposición de que el problema se
+encuentra en nuestra forma estándar (maximizar Z sujeta a
+restricciones funcionales de la forma ≤ y restricciones de no
+negatividad sobre todas las variables), con bi ≥ 0 para toda i =1,2,...m.
+Ahora veremos como hacer los ajustes a otras formas requeridas del
+modelo de programación lineal. Estos ajustes se pueden hacer en el
+paso inicial, y luego aplicar el resto del método Simplex tal cual como
+se ha visto.
+
+ RESTRICCIONES EN FORMA DE IGUALDAD.
+
+ En estos casos se utilizara la técnica de la variable artificial, que se
+mostrara con el siguiente ejemplo. Si en el problema se requiere que la
+planta 3 se use en toda su capacidad, el único cambio que sufre el
+modelo es que la tercera restricción, 3X1 + 2X2 ≤ 18 se convierta en
+restricción de igualdad: 3X1 + 2X2 = 18 , con lo cual la región factible es
+nada mas que el segmento que conecta los puntos (2,6) y (4,3)
+
+
+
+
+
+
+FORMA  ORIGINAL FORMA AUMENTADA
+
+Z= 3X1 + 5X2 Z= 3X1 + 5X2
+
+s.a: s.a:
+
+X1 ≤  4 X1 +S1 =  4
+2X2 ≤  12 2X2 + S2 =  12
+
+3X1 + 2X2 =  18 3X1 + 2X2 =  18
+X1 ≥ 0,   X2 ≥ 0 X1 ≥ 0,   X2 ≥ 0
+
+FORMA  ORIGINAL
+
+Como en la ecuación (3) no hay variable de holgura para
+usar como variable básica inicial y obtener la BF inicial, habrá
+que construir un problema artificial que tenga la misma
+solución óptima que el problema real.
+
+Se aplica la técnica de la variable artificial: se introduce una
+variable artificial en la ecuación (3) como si fuera una de
+holgura:
+
+
+
+3X1 + 2X2 + S3 = 18
+
+Luego se debe cambiar la función objetivo a
+
+Z= 3X1 + 5X2 - MS3
+
+Donde M representa un número positivo muy grande. (Este método que obliga a
+S3 a llegar hasta cero, se conoce como método de la M).
+
+Antes de aplicar el método Simplex, se debe convertir la ecuación (0) en una
+forma apropiada (se debe eliminar S3 de la ecuación 0). Para hacer esto se resta
+de la ecuación (0) la ecuación (3) multiplicada por M.
+
+Z - 3X1 - 5X2 + MS3= 0
+-M(3X1 + 2X2 + S3 = 18)
+
+------------------------------------
+Z-(3M+3)X1 – (2M+5)X2 =  -18M
+
+Esta ecuación da Z solo en términos de variables no básicas (X ,
+1 X2). A partir de
+
+aquí se puede aplicar el método Simplex tal como se ha visto anteriormente.
+
+
+
+FORMA  ORIGINAL FORMA AUMENTADA
+
+Z= 3X1 + 5X2 Z= -18M + (3M + 3)X1 + (2M + 5)X2
+
+s.a: s.a:
+
+X1 ≤  4 X1 +S1 =  4
+2X2 ≤  12 2X2 + S2 =  12
+
+3X1 + 2X2 =  18 3X1 + 2X2 +S3 =  18
+X1 ≥ 0,   X2 ≥ 0 X1 ≥ 0,   X2 ≥ 0
+
+
+
+Tablero Inicial
+
+Base Variable de Variable de holgura Solución
+decisión
+
+X1 X2 S1 S2 S3
+
+S1 1 0 1 0 0 4 4/1=4
+
+S2 0 2 0 1 0 12 X
+
+S3 3 2 0 0 1 18 18/3=6
+
+Z -3M-3 -2M-5 0 0 0 -18M
+
+
+
+S2NUEVA [0,2,0,1,0,12]-0[1,0,1,0,0,4]=[0,2,0,1,0,12]
+
+S3NUEVA [3,2,0,0,1,18] -3[1,0,1,0,0,4]=[0,2,-3,0,1,6]
+
+ZNUEVA [(-3M-3),(-2M-5),0,0,0,-18M] - (-3M-3) [1,0,1,0,0,4]
+=[0, (-2M-5), (3M+3),0,0,(-6M+12)]
+
+
+
+Tablero Inicial
+
+Base Variable de Variable de holgura Solución
+decisión
+
+X1 X2 S1 S2 S3
+
+x1 1 0 1 0 0 4 X
+
+S2 0 2 0 1 0 12 12/2=6
+
+S3 0 2 -3 0 1 6 6/2=3
+
+Z 0 -2M-5 3M+3 0 0 -6M+12
+
+
+
+X1NUEVA [1,0,1,0,0,4]-0[0,1,-3/2,0,1/2,3]=[1,0,1,0,0,4]
+
+S2NUEVA [0,2,0,1,0,12] -2[0,1,-3/2,0,1/2,3]=[0,0,3,1,-1,6]
+
+ZNUEVA [0, (-2M-5), (3M+3),0,0,(-6M+12)] -(-2M-5) [0,1,-3/2,0,1/2,3]
+=[0, 0,-9/2,0,(M+5/2),27]
+
+
+
+Tablero Inicial
+
+Base Variable de Variable de holgura Solución
+decisión
+
+X1 X2 S1 S2 S3
+
+X1 1 0 1 0 0 4 4/1=4
+
+S2 0 0 3 1 -1 6 6/3=2
+
+X2 0 1 -3/2 0 1/2 3 X
+
+Z 0 0 -9/2 0 M+5/2 27
+
+
+
+X1NUEVA [1,0,1,0,0,4]-1[0,0,1,1/3,-1/3,2]=[1,0,0,-1/3,1/3,2]
+
+X2NUEVA [0,1,-3/2,0,1/2,3] -3/2[0,0,1,1/3,-1/3,2]=[0,1,0,1/2,0,6]
+
+ZNUEVA [0, 0,-9/2,0,(M+5/2),27] -9/2[0,0,1,1/3,-1/3,2]
+=[0,0,0,3/2,(M+1),36]
+
+
+
+Tablero Inicial
+
+Base Variable de Variable de holgura Solución
+decisión
+
+X1 X2 S1 S2 S3
+
+X1 1 0 0 -1/3 1/3 2
+
+S1 0 0 1 1/3 -1/3 2
+
+X2 0 1 0 1/2 0 6
+
+Z 0 0 0 3/2 M+1 36
+
+
+
+FORMA  ORIGINAL FORMA AUMENTADA
+
+Minimizar Maximizar
+Z= 0.4X1 + 0.5X2
+
+s.a: Z= -12M + (-1.1M + 0.4)X1 + (-0.9M + 5)X2
+
+s.a:
+0.3X1 + 0.1X2 ≤  2.7
+0.5X1 + 0.5X2 =  6 0.3X1 + 0.1X2 + S1 =  2.7
+0.6X1 + 0.4X2 ≥  6 0.5X1 + 0.5X2 +  S2 =  6
+X1 ≥ 0,   X2 ≥ 0 0.6X1 + 0.4X2 –S3 +S4 =  6
+
+X1 ≥ 0,   X2 ≥ 0
+
+
+
+Se restan la función Z y las dos restricciones que se le agregaron las 
+variables artificiales multiplicadas por M
+
+-Z+ 0.4X1  + 0.5X2 + MS2 + MS4 =0
+-M(0.5X1 + 0.5X2 +  S2  =6 )
+-M(0.6X1 + 0.4X2 - S3 + S4 =6 )
+
+------------------------------------------------------
+-Z+(-1.1M + 0.4)X1 +(-0.9M+ 0.5)X2 +MS3 = -12M
+
+
+
+Tablero Inicial
+
+Base Variable de Variable de holgura Solució
+decisión n
+
+X1 X2 S1 S2 S3 S4
+
+S1 0.3 0.1 1 0 0 0 2.7
+
+S2 0.5 0.5 0 1 0 0 6
+
+S4 0.6 0.4 0 0 -1 1 6
+
+Z -1.1M -0.9M 0 0 M 0 -12M
++0.4 + 0.5
+
+
+
+VARIABLES QUE SALEN Y ENTRAN EN LA TABLA DEL 
+SIMPLEX: ENTRA X1 Y SALE S1
+
+S2NUEVA [0.5, 0.5, 0, 1 ,0, 0, 6]-0.5[1,1/3,10/3,0,0,0,9]=
+[0, 1/3, -5/3, 1, 0, 0, 3/2]
+
+S4NUEVA [0.6, 0.4, 0, 0, -1,1, 6]-0.6[1,1/3,10/3,0,0,0,9]=
+[0, 1/5, -2, 0, -1, 1, 3/5]
+
+ZNUEVA [(-1.1M+0.4),(-0.9M+0.5), 0, 0, M, 0, -12M]-
+(-1.1M+0.4)[1,1/3,10/3,0,0,0,9]=
+[0, (-(8/15)M + 11/30), ((11/3)M - 4/3), 0, M, 0, (-2.1M -3.6) ]
+
+
+
+Tablero Inicial
+
+Base Variable de Variable de holgura Solució
+decisión n
+
+X1 X2 S1 S2 S3 S4
+
+X1 1 1/3 10/3 0 0 0 9
+
+S2 0 1/3 -5/3 1 0 0 3/2
+
+S4 0 1/5 -2 0 -1 1 3/5
+
+Z -(8/15)M (11/3)M 0 M 0 (-2.1M  
+0 + 11/30 -4/3 -3.6)
+
+
+
+VARIABLES QUE SALEN Y ENTRAN EN LA TABLA DEL 
+SIMPLEX: ENTRA X2 Y SALE S4
+
+X1NUEVA [1, 1/3, 10/3, 0, 0, 0, 9]-1/3[0,1,-10,0,-5,5,3]=
+[1, 0, 20/3, 0, 5/3, -5/3, 8]
+
+S2NUEVA [0, 1/3, -5/3, 1, 0, 0, 3/2]-1/3[0,1,-10,0,-5,5,3]=
+[0, 0, 5/3, 1, 5/3, -5/3, 1/2]
+
+ZNUEVA [0, (-(8/15)M + 11/30), ((11/3)M - 4/3), 0, M, 0, (-2.1M -3.6)]-
+(-(8/15)M + 11/30))[0,1,-10,0,-5,5,3]=
+[0, 0, ((-5/3)M+(7/3)), 0, ((-5/3)M+(11/6)), ((8/3)M-(11/6)),       
+(-0.5M -4.7) ]
+
+
+
+Tablero Inicial
+
+Base Variable de Variable de holgura Solució
+decisión n
+
+X1 X2 S1 S2 S3 S4
+
+X1 1 0 20/3 0 5/3 -5/3 8
+
+S2 0 0 5/3 1 5/3 -5/3 1/2
+
+X2 0 1 -10 0 -5 5 3
+
+Z (-5/3)M 0 (-5/3)M (8/3)M (-0.5M  
+0 0 +7/3 +11/6 -11/6 -4.7)
+
+
+
+VARIABLES QUE SALEN Y ENTRAN EN LA TABLA DEL 
+SIMPLEX: ENTRA S3 Y SALE S2
+
+X1NUEVA [1, 0, 20/3, 0, 5/3, -5/3, 8]-5/3[0,0,1,3/5,1,-1,3/10]=
+[1, 0, 15/3, -1, 0, 0, 7.5]
+
+X2NUEVA [0, 1, -10, 0 -5, 5, 3]+5[0,0,1,3/5,1,-1,3/10]=
+[0, 1, -5, 3, 0, 0, 4.5]
+
+ZNUEVA [0, 0, ((-5/3)M+(7/3)), 0, ((-5/3)M+(11/6)), ((8/3)M-(11/6)),       
+(-0.5M -4.7)]- ((-5/3)M+(11/6))[0,0,1,3/5,1,-1,3/10]=
+[0, 0, 1/2, (M-1.1), 0, M, -5.25]
+
+
+
+Tablero Inicial
+
+Base Variable de Variable de holgura Solució
+decisión n
+
+X1 X2 S1 S2 S3 S4
+
+X1 1 0 15/3 -1 0 0 7.5
+
+S3 0 0 1 3/5 1 -1 3/10
+
+X2 0 1 -5 3 0 0 4.5
+
+Z
+0 0 1/2 (M-1.1) 0 M -5.25
+
+
+
+ACTIVIDAD DE CLASE 
+
+FORMA  ORIGINAL FORMA  ORIGINAL
+
+Maximizar
+Z= -2X1 + X2 -4X3 + 3X4 Z= -2X1 + X2 -4X3 + 3X4
+
+s.a: s.a:
+
+X1 + X2 + 3X3 + 2X4    ≤ 4 X1 + X2 + 3X3 + 2X4    ≤ 4
+-1(X1 -X3 +    X4 ≥ -1) - X1 +X3 - X4 ≤ 1
+
+2X1 + X2                   ≤   2 2X1 + X2                   ≤  2
+X1 + 2X2 + X3 + 2X4   = 4 X1 + 2X2 + X3 + 2X4    = 4
+
+X1 ≥ 0,   X2 ≥ 0 , X3 ≥ 0, X4 ≥ 0 X1 ≥ 0,   X2 ≥ 0 , X3 ≥ 0, X4 ≥ 0
+
+
+
+FORMA  ORIGINAL FORMA  AUMENTADA
+
+Z= -2X1 + X2 -4X3 + 3X4 -Z + (-2+M)X1 +(1+2M)X2  + (-4+M)X3 + 
+s.a: (3+2M)X4 = 4M
+
+s.a:
+X1 + X2 + 3X3 + 2X4    ≤ 4
+
+- X1 +X3 - X4 ≤ 1 X1 + X2 + 3X3 + 2X4 +S1 = 4
+2X1 + X2                   ≤  2 - X1 +X3 - X4 + S2      =  1
+X1 + 2X2 + X3 + 2X4    = 4 2X1 + X2                   +S3    =  2
+
+X1 + 2X2 + X3 + 2X4 -S4 + S5 = 4
+X1 ≥ 0,   X2 ≥ 0 , X3 ≥ 0, X4 ≥ 0
+
+X1 ≥ 0,   X2 ≥ 0 , X3 ≥ 0, X4 ≥ 0
+
+
+
+METODO DE LAS DOS FASES
+
+El procedimiento consiste en resolver el modelo en dos 
+etapas o fases.
+
+• Se usa ante la presencia de variables artificiales en el
+modelo a solucionar y su objetivo es eludir el uso de la
+constante M, aquella que definimos como un número muy
+grande aunque finito.
+
+• Paso Inicial: Se revisan las restricciones del problema
+original introduciendo variables artificiales según se
+necesite para obtener una solución básica factible inicial
+obvia para el problema artificial.
+
+
+
+Fase I
+
+ Uso del método simplex para resolver el problema de 
+programación lineal.
+
+ Minimizar Z = Σ de variables artificiales, sujeta a las
+restricciones revisadas. La solución óptima que se
+obtiene para este tipo de problemas (con Z = 0) será
+una solución básica factible par el problema real.
+
+
+
+Fase II
+
+ Se eliminan las variables artificiales (estas en esta fase
+valen 0). Comenzando con la solución BF que se
+obtiene al final de la fase I, se usa el método simplex
+para resolver el problema real. A continuación se
+presenta un ejemplo de terapia de radiación y se
+identifican la función objetivo y las restricciones para
+cada una de las fases.
+
+
+
+PROBLEMA ORIGINAL
+
+FORMA  ORIGINAL METODO DE LA M
+
+Minimizar Minimizar
+Z= 0.4X1 + 0.5X2 Z= 0.4X1 + 0.5X2 +MS2 +MS4
+
+s.a: s.a:
+
+0.3X1 + 0.1X2 ≤ 2.7 0.3X1 + 0.1X2 + S1                =  2.7
+0.5X1 + 0.5X2 =  6 0.5X1 + 0.5X2 +S2            =  6
+0.6X1 + 0.4X2 ≥  6 0.6X1 + 0.4X2 –S3 +S4   =  6
+X1 ≥ 0,   X2 ≥ 0 X1 ≥ 0,  X2 ≥ 0, S3 ≥ 0, S4 ≥ 0, S5 ≥ 0
+
+
+
+Fase I
+
+FORMA  ORIGINAL FASE 1
+
+Minimizar Minimizar
+Z= 0.4X1 + 0.5X2 Z= S2 + S4
+
+s.a: s.a:
+
+0.3X1 + 0.1X2 ≤ 2.7 0.3X1 + 0.1X2 + S1                =  2.7
+0.5X1 + 0.5X2 =  6 0.5X1 + 0.5X2 +S2            =  6
+0.6X1 + 0.4X2 ≥  6 0.6X1 + 0.4X2 –S3 +S4   =  6
+X1 ≥ 0,   X2 ≥ 0 X1 ≥ 0,  X2 ≥ 0, S1 ≥ 0, S2 ≥ 0, S3 ≥ 0 , S4 ≥ 0
+
+
+
+Fase II
+
+FORMA  ORIGINAL FASE 2
+
+Minimizar Minimizar
+Z= 0.4X1 + 0.5X2 Z= 0.4X1 + 0.5X2
+
+s.a: s.a:
+
+0.3X1 + 0.1X2 ≤ 2.7 0.3X1 + 0.1X2 + S1        =  2.7
+0.5X1 + 0.5X2 =  6 0.5X1 + 0.5X2 =  6
+0.6X1 + 0.4X2 ≥  6 0.6X1 + 0.4X2 –S3 =  6
+X1 ≥ 0,   X2 ≥ 0 X1 ≥ 0,  X2 ≥ 0, S1 ≥ 0,  S3 ≥ 0 
+
+
+
+ La única diferencia entre estas dos fases se encuentra
+en la función objetivo y en la inclusión (fase 1) o
+exclusión (fase 2) de las variables artificiales S2 y S4 .
+
+ Sin la variables artificiales, el problema para la fase 2
+no tiene una solución básica factible inicial obvia. El
+único propósito de resolver el problema para la fase 1
+es obtener una solución BF con S2 y S4= 𝟎 que se
+pueda usar como la solución BF inicial para la fase 2.
+
+ Para la siguiente tabla el renglón Z se convierte de
+minimizar a maximizar.
+
+
+
+Se restan la función Z y las dos restricciones que se le agregaron las 
+variables artificiales multiplicadas por M
+
+-Z                       + S2 + S4 =0
+- (0.5X1 + 0.5X2 +  S2  =6 )
+- (0.6X1 + 0.4X2 - S3 + S4 =6 )
+
+------------------------------------------------------
+-Z -1.1X1 -0.9X2 +S3 = -12
+
+
+
+Tablero Inicial
+
+Base Variable de Variable de holgura Solució
+decisión n
+
+X1 X2 S1 S2 S3 S4
+
+S1 0.3 0.1 1 0 0 0 2.7
+
+S2 0.5 0.5 0 1 0 0 6
+
+S4 0.6 0.4 0 0 -1 1 6
+
+-Z -1.1 -0.9 0 0 1 0 -12
+
+
+
+VARIABLES QUE SALEN Y ENTRAN EN LA TABLA DEL 
+SIMPLEX: ENTRA X1 Y SALE S1
+
+S2NUEVA [0.5, 0.5, 0, 1 ,0, 0, 6]-0.5[1,1/3,10/3,0,0,0,9]=
+[0, 1/3, -5/3, 1, 0, 0, 3/2]
+
+S4NUEVA [0.6, 0.4, 0, 0, -1,1, 6]-0.6[1,1/3,10/3,0,0,0,9]=
+[0, 1/5, -2, 0, -1, 1, 3/5]
+
+ZNUEVA [-1.1,-0.9 0, 0, 1, 0, -12]-(-1.1)[1,1/3,10/3,0,0,0,9]=
+[0, (-8/15), (11/3), 0, 1, 0, -2.1 ]
+
+
+
+Tablero Inicial
+
+Base Variable de Variable de holgura Solució
+decisión n
+
+X1 X2 S1 S2 S3 S4
+
+X1 1 1/3 10/3 0 0 0 9
+
+S2 0 1/3 -5/3 1 0 0 3/2
+
+S4 0 1/5 -2 0 -1 1 3/5
+
+Z -(8/15) (11/3) 0 1 0 -2.1
+0
+
+
+
+VARIABLES QUE SALEN Y ENTRAN EN LA TABLA DEL 
+SIMPLEX: ENTRA X2 Y SALE S4
+
+X1NUEVA [1, 1/3, 10/3, 0, 0, 0, 9]-1/3[0,1,-10,0,-5,5,3]=
+[1, 0, 20/3, 0, 5/3, -5/3, 8]
+
+S2NUEVA [0, 1/3, -5/3, 1, 0, 0, 3/2]-1/3[0,1,-10,0,-5,5,3]=
+[0, 0, 5/3, 1, 5/3, -5/3, 1/2]
+
+ZNUEVA [0, (-8/15), (11/3), 0, 1, 0, -2.1 ]-(-(8/15))[0,1,-10,0,-5,5,3]=
+[0, 0, (-5/3), 0, (-5/3), (8/3),(-0.5) ]
+
+
+
+Tablero Inicial
+
+Base Variable de Variable de holgura Solució
+decisión n
+
+X1 X2 S1 S2 S3 S4
+
+X1 1 0 20/3 0 5/3 -5/3 8
+
+S2 0 0 5/3 1 5/3 -5/3 1/2
+
+X2 0 1 -10 0 -5 5 3
+
+Z (-5/3) 0 (-5/3) (8/3) (-0.5)
+0 0
+
+
+
+VARIABLES QUE SALEN Y ENTRAN EN LA TABLA DEL 
+SIMPLEX: ENTRA S1 Y SALE S2
+
+X1NUEVA [1, 0, 20/3, 0, 5/3, -5/3, 8]-20/3[0,0,1,3/5,1,-1,3/10]=
+[1, 0, 0, -4, -5, 5, 6]
+
+X2NUEVA [0, 1, -10, 0 -5, 5, 3]+10[0,0,1,3/5,1,-1,3/10]=
+[0, 1, 0, 6, 5, -5, 6]
+
+ZNUEVA [0, 0, (-5/3),0,(-5/3),(8/3),(-0.5) ] +(5/3) [0,0,1,3/5,1,-1,3/10]=
+[0, 0, 0, 1, 0, 1, 0]
+
+
+
+Tablero Inicial
+
+Base Variable de Variable de holgura Solución
+decisión
+
+X1 X2 S1 S2 S3 S4
+
+X1 1 0 0 -4 -5 5 6
+
+S1 0 0 1 3/5 1 -1 3/10
+
+X2 0 1 0 6 5 -5 6
+
+Z
+0 0 0 1 0 1 0
+
+
+
+Fase II
+
+ Se eliminan las variables artificiales (estas en esta fase
+valen 0). Comenzando con la solución BF que se
+obtiene al final de la fase I, se usa el método simplex
+para resolver el problema real. A continuación se
+presenta un ejemplo de terapia de radiación y se
+identifican la función objetivo y las restricciones para
+cada una de las fases.
+
+
+
+Tablero Inicial
+
+Iteración Base Variable de Variable de holgura Soluc
+decisión ión
+
+Tabla simplex final de la fase 1 X1 X2 S1 S2 S3 S4
+
+X1 1 0 0 -4 -5 5 6
+
+S1 0 0 1 3/5 1 -1 3/10
+
+X2 0 1 0 6 5 -5 6
+
+Z 0 0 0 1 0 1 0
+
+Se eliminan S2 y S4 X1 1 0 0 -5 6
+
+S1 0 0 1 1 3/10
+
+X2 0 1 0 5 6
+
+Z 0 0 0 0 0
+
+
+
+Iteración Base Variable de Variable de holgura Soluc
+decisión ión
+
+Se sustituye la función objetivo  X1 X2 S1 S2 S3 S4
+
+de la fase 2
+X1 1 0 0 -5 6
+
+S1 0 0 1 1 3/10
+
+X2 0 1 0 5 6
+
+Z 0.4 0.5 0 0 0
+
+Se restablece la forma X1 1 0 0 -5 6
+apropiada de eliminación 
+
+S1 0 0 1 1 3/10
+gaussiana
+
+X2 0 1 0 5 6
+
+Z 0 0 0 -0.5 -5.4
+
+Se restan la función Z y las restricciones (1) y (3) multiplicadas por 0.4 y  0.5 
+respectivamente 
+
+-Z  + 0.4X1 +   0.5X2 =0
+- (0.4)(             X1 +      0X2 -5S3  =6 )
+- (0.5)(          0X1 +        X2 +5S3 =6 )
+
+------------------------------------------------------
+-Z                                       -0.5S3 = -5.4
+
+
+
+Tablero Inicial
+
+Base Variable de Variable de holgura Solución
+decisión
+
+X1 X2 S1 S3
+
+X 1 0 0 -5 6
+1
+
+S1 0 0 1 1 3/10
+
+X 0 1 0 5 6
+2
+
+Z 0 0 0 -0.5 -5.4
+
+
+
+VARIABLES QUE SALEN Y ENTRAN EN LA TABLA DEL 
+SIMPLEX: ENTRA S3 Y SALE S1
+
+X1NUEVA [1, 0, 0, -5, 6] +5[0, 0, 1, 1, (3/10)]= [1, 0, 5, 0, 7.5]
+
+X2NUEVA [0, 1, 0, 5, 6] -5[0, 0, 1, 1, (3/10)]= [0, 1, -5, 0, 4.5]
+
+ZNUEVA [0, 0,0,(-1/2),-5.4 ] +(1/2)[0, 0, 1, 1,(3/10)]= [0, 0, 1/2, 0,-5.25]
+
+
+
+Tablero Inicial
+
+Base Variable de Variable de holgura Solución
+decisión
+
+X1 X2 S1 S3
+
+X 1 0 5 0 7.5
+1
+
+S3 0 0 1 1 3/10
+
+X 0 1 -5 0 4.5
+2
+
+Z 0 0 0.5 0 -5.25
+
+
+
+METODO SIMPLEX FORMA MATRICIAL
+
+El método simplex original es un procedimiento
+algebraico directo.
+
+Sin embargo, durante su cálculo utiliza muchos valores
+los cuales finalmente no son relevantes en la toma de
+decisiones.
+
+➢ Los coeficientes de las V.N.B en el renglón (0).
+➢ Los coeficientes de la variable básica entrante en
+
+las restricciones.
+➢ Los coeficientes de las V.B actuales en las
+
+restricciones.
+➢ El lado derecho de las ecuaciones.
+
+
+
+El método simplex revisado utiliza una notación de
+forma matricial para hallar la solución al problema.
+
+Max  Z = cx
+
+Sujeto a: 
+Ax ≤  b
+
+x ≥ 0
+
+
+
+donde c es el vector renglón 
+
+C = [ x1, x2, …., xn ]
+
+c = vector renglón de costos
+x = vector columna variables de decisión
+b = vector columna recursos
+0 = vector columna de ceros
+
+x1  b1  0
+   
+x2 b  
+
+0
+x =   2
+
+,    b =   ,    0 =  
+    
+     
+x 0
+
+n  bn   
+
+
+
+y A es la matriz 
+
+ a11  a1n 
+ 
+
+A =   
+ 
+am1  amn 
+
+Para obtener la forma aumentada del problema se
+introduce el vector columna de las variables de holgura
+
+xn+1 
+ 
+x
+ n+2
+
+xs =
+
+
+ 
+ 
+xn+m 
+
+
+
+de manera que las restricciones se convierten en
+
+x  x 
+A,  I  = b   y       0
+
+xs  xs 
+
+Donde I es la matriz identidad de orden m x m y el vector
+nulo 0 ahora tiene n + m elementos.
+
+
+
+Obtención de una solución básica factible
+
+El enfoque general del MS radica en obtener una
+secuencia de soluciones BF mejoradas hasta alcanzar la
+solución optima.
+
+Una de las características clave de la forma matricial del
+MS revisado esta relacionada con la forma en que obtiene
+cada nueva solución BF después de identificar sus
+variables básicas y no básicas.
+
+Dadas esta variables, la solución básica que resulta es la
+solución de las m ecuaciones
+
+x 
+A,  I  = b   
+
+xs 
+
+
+
+En las que las n variables no básicas de entre los n + m
+elementos de
+
+x 
+  
+xs 
+
+Se igualan a cero. Cuando se eliminan estas n variables al
+igualarlas a cero queda un conjunto de m ecuaciones con m
+incógnitas (las variables básicas). Este sistema se puede
+denotar por BxB = b donde el vector de variables básicas
+
+se obtiene al eliminar las variables no
+xB1 
+  básicas de
+xB2
+
+xB =
+  x 
+    
+  xs 
+xBm 
+
+
+
+y la matriz base
+ B11  B1n 
+ 
+
+B =   
+ 
+Bm1  Bmn 
+
+se obtiene al eliminar las columnas correspondientes a los
+coeficientes de las variables no básicas de [ A, I ]. (Aun
+mas, los elementos de xB y, por lo tanto, las columnas de B
+pueden colocarse en orden diferente al ejecutar el MS.)
+
+El MS introduce solo variables básicas tales que B sea no 
+singular, de manera que B-1 siempre existe.
+
+
+
+De esta forma, para resolver BxB = b, se premultiplican
+ambos lados por B-1 :
+
+B−1Bx = 1
+B B− b
+
+Como B-1 B = I, la solución deseada para las variables 
+básicas es
+
+x = B−1
+B b
+
+Sea cB el vector cuyos elementos son los coeficientes de la
+función objetivo (incluye los ceros para las variables de
+holgura) que corresponden a los elementos de xB .
+
+El valor de la función objetivo de esta solución básica es,
+entonces:
+
+Z = c 1
+BxB = cBB
+
+− b
+
+
+
+EJEMPLO 2 (Se repite el ejemplo de la diapositiva # 25 )
+
+FORMA  ORIGINAL FORMA AUMENTADA
+
+Z= 3X1 + 5X2 Z= 3X1 + 5X2
+
+s.a: s.a:
+
+X1 ≤  4 X1 +S1 =  4
+2X2 ≤  12 2X2 + S2 =  12
+
+3X1 + 2X2 ≤  18 3X1 + 2X2 + S3 =  18
+X1 ≥ 0,   X2 ≥ 0 X1 ≥ 0,   X2 ≥ 0
+
+1  0  1  0  0
+ 
+
+c = [3,5],   [A, I]= 0  2  0  1  0 ,
+ 
+3  2  0  0  1
+
+4  x3 
+  x1   
+
+b = 12 ,     x =
+    ,     xs = x
+
+ 4 
+ x
+  2 
+18 x 5 
+
+
+
+Iteración 0
+
+x3  1 0 0
+   
+
+  x = B = 0 0 = −1
+B x4 ,  1 B  de manera que
+
+   
+x  0 0 1
+
+5 
+
+x3  1 0 0  4   4 
+       
+
+  x4 = 0 1 0 12 = 12 ,  c= 0, 0, 0,
+        
+x  0 0 1
+
+5  18 18
+
+ 4 
+
+  de manera que Z=  
+0, 0, 0, 12 = 0
+
+ 
+18
+
+
+
+Iteración 1
+1 0 0
+
+x3  1 0 0  
+   
+
+  B 0 1 1
+ x −
+
+B = x2 , = 2 0 =,   B  = 0 0  de manera que
+     2 
+x  0 2 1
+
+5   − 
+0 1 1
+
+1 0 0
+x3     4  4
+  1
+
+     
+  x2 = 0 0 12 = 6 ,  c=0, 5, 0,
+  
+
+ 2     
+x   18 6
+
+5 0 −1 1    
+ 
+
+4
+ 
+
+  entonces Z=0, 5, 0, 6 = 30
+ 
+6
+
+
+
+Iteración 1  1 1
+1 − 
+
+x 1 0 1 3 3
+3     
+
+   
+,  0 2 0 1 1
+
+  x = = = −
+B x2 B ,   B  = 0 0   de manera que
+
+     2 
+x  0 2 3
+
+1   
+1 1
+
+0 − 
+ 3 3
+
+1  
+ 1 
+
+
+1 −
+
+3 3
+x3     4  2
+  1
+
+  x2 = 0 0     
+12 = 6 ,  c= 0, 5, 3,
+
+  
+ 2     
+
+x    18 21 1 1 
+0 − 
+ 3 3 
+
+2
+ 
+
+  entonces Z=0, 5, 3, 6 = 36
+ 
+2
+
+
+
+Ejemplo # 2 forma matricial del método simplex
+
+
+
+Iteración 0
+
+
+
+Analizando la variable que entra a la solución
+
+se toma el Zj - cj más negativo. Así, la variable entrante será x1
+
+
+
+Analizando la variable que sale de la solución:
+
+
+
+Iteración 1
+
+
+
+Iteración 2
+
+
+
+Actividad de clase:
+Utilice el método matricial para resolver el siguiente
+problema, 30 minutos para resolverlo y entregarlo.
+Valor 0.5 ptos.
+
+
+
+Forma matricial del conjunto de ecuaciones actual
+
+Forma matricial del conjunto de ecuaciones que aparece en
+la tabla simplex en cualquier iteración del MS original.
+
+El conjunto original de ecuaciones, la forma matricial es
+
+Z 
+1 −c 0   0
+  x =
+0 A I    
+  b 
+
+x s 
+
+
+
+Después de cualquier iteración, XB = B-1 b y Z = CB B-1 b,
+por lo que el lado derecho de las ecuaciones se ha
+convertido en:
+
+Z −1 0 1
+1 CBB CBB− b
+
+= =
+X 1 B 1
+B 0 B− b − b
+
+Entonces, las operaciones algebraicas en ambos lados del
+conjunto de ecuaciones original resultaron equivalentes al
+premultiplicarlos por esta misma matriz. Como la forma
+matricial que se busca
+
+1 1 1 1 1 1
+C − 0 C −
+
+BB −c BB A− c CBB
+−
+
+=
+0 B−1 0 A I 0  B−1A         B−1
+
+
+
+para el conjunto de ecuaciones después de cualquier
+iteración es
+
+Z
+1 C −1 1 1
+
+BB A− c CBB− CBB− b
+X =
+
+0 B−1A B−1 B−1b
+XS
+
+
+
+Tabla inicial y final del símplex en forma matricial
+
+Coeficiente de
+
+Variable Ec. Lado 
+Iteración Variables Variable de 
+
+básica núm. Z Derecho
+original holgura
+
+Z 0 1 -C 0 0
+0
+
+XB 1-m 0 A I b
+
+Z 0 1 C  
+BB-1 A -C CBB-1 CBB-1b
+
+Cualquiera
+XB 1-m 0 B-1 A B-1 B-1b
+
+
+
+Ejemplo :Considérese el último conjunto de ecuaciones
+que se obtiene en la iteración 2 para el problema de
+Wyndor Glass.
+
+1 1 −1 1 0 0 0
+3 3
+
+B−1A = 0 1 0 0 2 = 0 1
+2
+
+0 −1 1 3 2 1 0
+3 3
+
+1 1 −1
+3 3
+
+CBB
+−1 = 0 5 3 0 1 0 = 0 3 1
+
+2 2
+
+0 −1 1
+3 3
+
+
+
+0 0
+
+C 1
+BB
+
+− A –C = 0 5 3 0 1 − 3 5 = 0 0
+
+1 0
+
+Como ya se encontraron:
+
+XB = B-1b  y  Z = CBB-1b, 
+estos resultados dan las siguientes ecuaciones:
+
+Z
+
+1 0 0 0 3 / 2 1 X 1 36
+
+0 0 0 1 1/ 3 −1/ 3 X 2 2
+=
+
+0 0 1 0 1/ 2 0 X 3 6
+
+0 1 0 0 −1/ 3 1/ 3 X 4 2
+
+X 5
+
+
+
+PROCEDIMIENTO GLOBAL
+
+1. Sólo es necesario obtener B-1 para poder calcular
+todos los números de la tabla símplex a partir de los
+parámetros originales (A, b, CB) del problema.
+
+2. Cualquiera de estos números (excepto Z = CBB-1b) se
+puede obtener al efectuar nada más una parte de la
+multiplicación de matrices.
+
+
+
+RESUMEN DEL METODO SIMPLEX REVISADO
+1. Paso Inicial: El mismo que  para el método simplex original
+2. Paso iterativo:
+
+Parte 1  Determinar la variable básica entrante
+
+Parte 2 Determinar la variable básica que sale igual que para 
+el método simplex original, pero se calcula sólo  los números 
+que se necesitan para hacerlo (los coeficientes de la variable 
+básica entrante en todas las ecuaciones menos la ecuación 
+(0), y después, para cada coeficiente estrictamente positivo, 
+se calcula el lado derecho.)
+
+
+
+Parte 3 Determinar la nueva solución básica factible:
+obtener B-1 y el conjunto XB = B-1b.( El cálculo de XB es
+opcional, a menos que la prueba de optimalidad encuentre
+que es 0ptima.)
+
+3. Prueba de optimalidad : igual que para el método
+simplex original, excepto que se calculan sólo los
+números necesarios para realizar esta prueba, a saber,
+los coeficientes de las variables no básicas en la
+ecuación (0).
