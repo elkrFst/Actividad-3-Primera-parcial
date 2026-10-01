@@ -409,7 +409,7 @@ def solve_linear_program(variable_count, costs, constraints, method,
 class SimplexApp:
     def __init__(self, root):
         self.root = root
-        self.root.title("Laboratorio de Programación Lineal")
+        self.root.title("Actividad 3")
         self.root.geometry("1120x780")
         self.root.minsize(900, 620)
         self._configure_style()
@@ -437,7 +437,7 @@ class SimplexApp:
     def _build_interface(self):
         shell = ttk.Frame(self.root, padding=(24, 20))
         shell.pack(fill="both", expand=True)
-        ttk.Label(shell, text="Laboratorio de Programación Lineal",
+        ttk.Label(shell, text="Actividad 3",
                   style="Title.TLabel").pack(anchor="w")
         ttk.Label(shell, text="Método símplex · Gran M · Dos Fases",
                   style="Sub.TLabel").pack(anchor="w", pady=(3, 16))
